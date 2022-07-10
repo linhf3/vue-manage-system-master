@@ -71,6 +71,10 @@ export default {
                     index: '5',
                     title: '淘票票',
                     subs: [
+                      {
+                        index: 'stockAndfuturesData',
+                        title: '数据监控0'
+                      },
                         {
                             index: 'datamonitoring',
                             title: '数据监控1'
@@ -79,6 +83,10 @@ export default {
                             index: 'futuresOneDaysData',
                             title: '数据监控2'
                         },
+                      {
+                        index: 'futuresData',
+                        title: '数据监控3'
+                      },
                         {
                             index: 'stockMaintenance',
                             title: '小票维护'

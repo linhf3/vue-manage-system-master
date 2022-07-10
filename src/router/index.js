@@ -30,6 +30,11 @@ export default new Router({
                     meta: { title: '基础表格' }
                 },
                 {
+                    path: '/stockAndfuturesData',
+                    component: () => import(/* webpackChunkName: "table" */ '../components/page/stockAndfuturesData.vue'),
+                    meta: { title: '数据监控0' }
+                },
+                {
                     path: '/datamonitoring',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/DataMonitoring.vue'),
                     meta: { title: '数据监控1' }
@@ -38,6 +43,11 @@ export default new Router({
                     path: '/futuresOneDaysData',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/futuresOneDaysData.vue'),
                     meta: { title: '数据监控2' }
+                },
+                {
+                    path: '/futuresData',
+                    component: () => import(/* webpackChunkName: "table" */ '../components/page/futuresData.vue'),
+                    meta: { title: '设计模式概况' }
                 },
                 {
                     path: '/stockMaintenance',
