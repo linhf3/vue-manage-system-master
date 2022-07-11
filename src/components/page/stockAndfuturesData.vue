@@ -91,7 +91,7 @@ export default {
             editVisible: false,
             dynamicTags: [],
             inputVisible: false,
-          stockMillisecond:5,
+          stockMillisecond:10,
           futuresMillisecond:5,
           warningValue: 90,  //期货预警值
           warningFlag: false  //期货预警开启标识，默认不开启
