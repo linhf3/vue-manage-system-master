@@ -140,9 +140,7 @@ export default {
       })
     },
     deleteCode(num){
-      debugger
       this.$http.get('/godwealth/api/stock/delete/'+num).then((response)=> {
-        debugger
         if (response.data.status != 200){
           alert("删除失败");
         }
@@ -150,11 +148,7 @@ export default {
       })
     },
     getData() { // 从服务端加载数据的函数
-      debugger
-      var a = '' == this.vars?'#':this.vars;
-      debugger
       this.$http.get('/godwealth/api/stock/querySockCodeList/'+('' == this.vars?'LLLL':this.vars)).then((response)=> {
-        debugger
         if (response.data.status != 200){
           alert(response.data.response.data.message);
           this.$options.methods.stopInterval()

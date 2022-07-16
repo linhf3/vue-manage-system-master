@@ -75,12 +75,14 @@ export default {
             clearInterval(this.clearTimeSet);
         },
         getData() { // 从服务端加载数据的函数
+          debugger
           this.$http.post('/godwealth/api/proportionLog/getStockDeviationLogs',this.proportionLog).then((response)=> {
+            debugger
             if (response.data.status != 200){
               alert(response.data.response.data.message);
               this.$options.methods.stopInterval()
             }
-            this.list =  response.data.data;
+            this.list =  response.data.resultMap.resultList;
             console.log("返回结果集：",this.list);
           })
         },

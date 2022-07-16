@@ -29,9 +29,9 @@
                 <el-table-column label="使用率(1)">
                     <template slot-scope="scope">{{scope.row.proportion}}</template>
                 </el-table-column>
-              <el-table-column label="使用率(5)">
-                <template slot-scope="scope">{{scope.row.fProportion}}</template>
-              </el-table-column>
+<!--              <el-table-column label="使用率(5)">-->
+<!--                <template slot-scope="scope">{{scope.row.fProportion}}</template>-->
+<!--              </el-table-column>-->
 
 
             </el-table>
@@ -74,7 +74,6 @@ export default {
                 alert(response.data.response.data.message);
                 this.$options.methods.stopInterval()
               }
-              debugger
               this.list =  response.data.resultMap.resultList;
                 //alert(list);
                 // if(this.list.length <=0){

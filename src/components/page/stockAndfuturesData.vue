@@ -22,13 +22,25 @@
                 ref="multipleTable"
                 header-cell-class-name="table-header">
               <el-table-column label="名称">
-                <template slot-scope="scope">{{scope.row.name}}</template>
+                <template slot-scope="scope">
+                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.name}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.name}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.name}}</div>
+                </template>
               </el-table-column>
               <el-table-column label="数值">
-                <template slot-scope="scope">{{scope.row.price}}</template>
+                <template slot-scope="scope">
+                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.price}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.price}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.price}}</div>
+                </template>
               </el-table-column>
               <el-table-column label="五日偏离">
-                <template slot-scope="scope">{{scope.row.proportion}}</template>
+                <template slot-scope="scope">
+                <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.proportion}}</div>
+                <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.proportion}}</div>
+                <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.proportion}}</div>
+                </template>
               </el-table-column>
 <!--              <el-table-column label="五日偏离">-->
 <!--                <template slot-scope="scope">{{scope.row.fProportion}}</template>-->
@@ -47,9 +59,8 @@
                 <el-button type="success" @click = "refreshFuturesDate">开始</el-button>
                 <!--                <el-button type="success" id = "speak" @click = "speak">语音</el-button>-->
                 <el-button type="danger" @click = "stopFuturesInterval">停止</el-button>
-                <el-input v-model="warningValue" placeholder="预警值" class="handle-input mr10" style="width: 60px;"></el-input>
-                <el-button type="success" @click = "startWarning">开始</el-button>
-                <el-button type="danger" @click = "stopWarning">停止</el-button>
+                <el-button type="success" @click = "startWarning">播放</el-button>
+                <el-button type="danger" @click = "stopWarning">停播</el-button>
               </div>
               <el-table
                   :data="futuresList"
@@ -58,17 +69,29 @@
                   ref="multipleTable"
                   header-cell-class-name="table-header">
                 <el-table-column label="名称">
-                  <template slot-scope="scope">{{scope.row.name}}</template>
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.name}}</div>
+                    <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.name}}</div>
+                    <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.name}}</div>
+                  </template>
                 </el-table-column>
                 <el-table-column label="数值">
-                  <template slot-scope="scope">{{scope.row.price}}</template>
+                  <template slot-scope="scope">
+                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.price}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.price}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.price}}</div>
+                </template>
                 </el-table-column>
                 <el-table-column label="一日偏离">
-                  <template slot-scope="scope">{{scope.row.proportion}}</template>
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.proportion}}</div>
+                    <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.proportion}}</div>
+                    <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.proportion}}</div>
+                  </template>
                 </el-table-column>
-                <el-table-column label="五日偏离">
-                  <template slot-scope="scope">{{scope.row.fProportion}}</template>
-                </el-table-column>
+<!--                <el-table-column label="五日偏离">-->
+<!--                  <template slot-scope="scope">{{scope.row.fProportion}}</template>-->
+<!--                </el-table-column>-->
 
 
               </el-table>
@@ -93,7 +116,6 @@ export default {
             inputVisible: false,
           stockMillisecond:5,
           futuresMillisecond:3,
-          warningValue: 90,  //期货预警值
           warningFlag: false  //期货预警开启标识，默认不开启
 
 
@@ -137,6 +159,7 @@ export default {
           }
 
           this.stockList =  response.data.resultMap.resultList;
+          debugger
           //alert(list);
           // if(this.list.length <=0){
           //     this.$options.methods.stopInterval()
@@ -158,25 +181,16 @@ export default {
 
               this.futuresList =  response.data.resultMap.resultList;
 
-              var i, x;
+              var i;
               if(this.warningFlag){
-                if(this.warningValue>=0){
-                  this.warningValue1 = "+"+this.warningValue;
-                }else {
-                  this.warningValue1 = "-"+this.warningValue;
-                }
                 for (i=0; i<this.futuresList.length; i++) {
-                  x = this.futuresList[i];
-                  debugger
-                  if (x.proportion.substring(0,x.proportion.length-1) > this.warningValue1){
-                    console.log(this.warningValue1);
+                  if(this.futuresList[i].positiveNegativeFlag == 1 || this.futuresList[i].positiveNegativeFlag == 1){
                     var utterThis = new SpeechSynthesisUtterance("hello");
-                     utterThis .rate = 1.0
-                     this.synth = window.speechSynthesis;
-                     this.synth.speak(utterThis);
+                    utterThis .rate = 1.0
+                    this.synth = window.speechSynthesis;
+                    this.synth.speak(utterThis);
                     break;
                   }
-                  console.log(x);
                 }
               }
                 console.log("返回结果集：",this.futuresList);
