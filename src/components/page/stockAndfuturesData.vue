@@ -91,8 +91,8 @@ export default {
             editVisible: false,
             dynamicTags: [],
             inputVisible: false,
-          stockMillisecond:10,
-          futuresMillisecond:5,
+          stockMillisecond:5,
+          futuresMillisecond:3,
           warningValue: 90,  //期货预警值
           warningFlag: false  //期货预警开启标识，默认不开启
 
@@ -136,7 +136,7 @@ export default {
             this.$options.methods.stopInterval()
           }
 
-          this.stockList =  response.data.data;
+          this.stockList =  response.data.resultMap.resultList;
           //alert(list);
           // if(this.list.length <=0){
           //     this.$options.methods.stopInterval()
@@ -156,7 +156,7 @@ export default {
                 this.$options.methods.stopInterval()
               }
 
-              this.futuresList =  response.data.data;
+              this.futuresList =  response.data.resultMap.resultList;
 
               var i, x;
               if(this.warningFlag){
@@ -179,15 +179,6 @@ export default {
                   console.log(x);
                 }
               }
-                //alert(list);
-                // if(this.list.length <=0){
-                //     this.$options.methods.stopInterval()
-                // }
-                 //debugger
-              // var utterThis = new SpeechSynthesisUtterance("你好");
-              // utterThis .rate = 0.8
-              // this.synth = window.speechSynthesis;
-              // this.synth.speak(utterThis);
                 console.log("返回结果集：",this.futuresList);
             })
         },

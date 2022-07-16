@@ -71,7 +71,7 @@ export default {
                 this.$options.methods.stopInterval()
               }
 
-              this.list =  response.data.data;
+              this.list =  response.data.resultMap.resultList;
                 //alert(list);
                 // if(this.list.length <=0){
                 //     this.$options.methods.stopInterval()

@@ -9,8 +9,10 @@
     </div>
     <div class="container">
       <div class="handle-box">
-        <el-input v-model="code" placeholder="代码" class="handle-input mr10" style="width: 160px;"></el-input>
+        <el-input v-model="code" placeholder="股票代码" class="handle-input mr10" style="width: 160px;"></el-input>
         <el-button type="success" @click = "addOne">新增</el-button>
+        <el-input v-model="vars" placeholder="代码/名称/是否有效(模糊查询)" class="handle-input mr10" style="width: 220px;"></el-input>
+        <el-button type="success" @click = "query">查询</el-button>
       </div>
       <el-table
           :data="list"
@@ -18,12 +20,23 @@
           class="table"
           ref="multipleTable"
           header-cell-class-name="table-header">
+        <el-table-column label="序号(排序用)">
+          <template slot-scope="scope">{{scope.row.id}}</template>
+        </el-table-column>
         <el-table-column label="名称">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
         <el-table-column label="代码">
             <template slot-scope="scope">{{scope.row.stockCode}}</template>
-<!--            <el-input v-model="scope.row.stockCode" @blur="onInputBlur(scope.row)"  placeholder="请输入内容">{{scope.row.stockCode}}</el-input>-->
+        </el-table-column>
+        <el-table-column label="是否有效">
+          <template slot-scope="scope">{{scope.row.swEffective}}</template>
+        </el-table-column>
+        <el-table-column label="下偏离(负数)">
+          <template slot-scope="scope">{{scope.row.downwardDeviation}}</template>
+        </el-table-column>
+        <el-table-column label="上偏离(正数)">
+          <template slot-scope="scope">{{scope.row.deviation}}</template>
         </el-table-column>
 
         <el-table-column
@@ -32,7 +45,9 @@
             width="100">
           <template slot-scope="scope">
             <el-button @click="showEditDialog(scope.row)" type="text" size="small">编辑</el-button>
-            <el-button @click="deleteCode(scope.row.stockCode)" type="text" size="small">删除</el-button>
+            <el-button @click="deleteCode(scope.row.stockCode)" type="text" size="small">
+              <p  v-if="scope.row.category==1">删除</p>
+              </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -41,9 +56,25 @@
       <div>
         <el-dialog title="代码修改" :visible.sync="dialogVisible" width="30%">
           <el-form ref="form" :model="form" label-width="80px">
-            <el-form-item label="新代码">
-              <el-input v-model="form.code"></el-input>
+            <el-form-item label="序号">
+              <el-input v-model="stock.id"></el-input>
             </el-form-item>
+            <el-form-item label="代码">
+              <el-input v-model="stock.stockCode" :disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="是否有效">
+              <el-radio-group v-model="stock.swEffective">
+                <el-radio label="有效"></el-radio>
+                <el-radio label="无效"></el-radio>
+              </el-radio-group>
+            </el-form-item>
+            <el-form-item label="下偏离">
+              <el-input-number v-model="stock.downwardDeviation" controls-position="right" :min="-100" :max="0"></el-input-number>
+            </el-form-item>
+            <el-form-item label="上偏离">
+              <el-input-number v-model="stock.deviation" controls-position="right" :min="0" :max="100"></el-input-number>
+            </el-form-item>
+
           </el-form>
           <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
@@ -62,6 +93,7 @@ export default {
   data() {
     return {
       list: [],
+      vars:'',
       editVisible: false,
       dynamicTags: [],
       inputVisible: false,
@@ -69,6 +101,17 @@ export default {
       code:'',
       dialogVisible:false,
       row:'',
+      stock:{
+        id:0,
+        name:'',
+        stockCode:'',
+        category:'',
+        swEffective:'',
+        memo:'',
+        exchangeCode:'',
+        downwardDeviation:0,
+        deviation:0
+      },
       form: {
         code:''
       }
@@ -107,13 +150,16 @@ export default {
       })
     },
     getData() { // 从服务端加载数据的函数
-      this.$http.get('/godwealth/api/stock/querySockCodeList/').then((response)=> {
+      debugger
+      var a = '' == this.vars?'#':this.vars;
+      debugger
+      this.$http.get('/godwealth/api/stock/querySockCodeList/'+('' == this.vars?'LLLL':this.vars)).then((response)=> {
+        debugger
         if (response.data.status != 200){
           alert(response.data.response.data.message);
           this.$options.methods.stopInterval()
         }
-        debugger
-        this.list =  response.data.data;
+        this.list =  response.data.resultMap.resultList;
         console.log("返回结果集：",this.list);
       })
     },
@@ -122,12 +168,16 @@ export default {
     },
     async showEditDialog(row) {
       this.dialogVisible = true
-      this.row =row;
+      this.stock =row;
+    },
+    query() {
+      this.getData();
     },
     submit() {
       this.dialogVisible = false;
-      this.row.stockCode = this.form.code;
-      this.$http.post('/godwealth/api/stock/updateStockCode',this.row).then((response)=> {
+      debugger
+      this.$http.post('/godwealth/api/stock/updateStockCode',this.stock).then((response)=> {
+        debugger
         if (response.data.status != 200){
           alert(response.data.response.data.message);
           this.$options.methods.stopInterval()

@@ -49,7 +49,7 @@ export default {
             editVisible: false,
             dynamicTags: [],
             inputVisible: false,
-            millisecond:5
+            millisecond:3
 
 
         };
@@ -74,8 +74,8 @@ export default {
                 alert(response.data.response.data.message);
                 this.$options.methods.stopInterval()
               }
-
-              this.list =  response.data.data;
+              debugger
+              this.list =  response.data.resultMap.resultList;
                 //alert(list);
                 // if(this.list.length <=0){
                 //     this.$options.methods.stopInterval()
