@@ -32,22 +32,22 @@ export default new Router({
                 {
                     path: '/stockAndfuturesData',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/stockAndfuturesData.vue'),
-                    meta: { title: '数据监控0' }
+                    meta: { title: '综合面板' }
                 },
                 {
                     path: '/datamonitoring',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/DataMonitoring.vue'),
-                    meta: { title: '数据监控1' }
+                    meta: { title: '股票面板' }
                 },
                 {
                     path: '/futuresOneDaysData',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/futuresOneDaysData.vue'),
-                    meta: { title: '数据监控2' }
+                    meta: { title: '期货面板' }
                 },
                 {
                     path: '/futuresData',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/futuresData.vue'),
-                    meta: { title: '设计模式概况' }
+                    meta: { title: '设计模式' }
                 },
                 {
                     path: '/stockMaintenance',
@@ -57,7 +57,7 @@ export default new Router({
                 {
                     path: '/proportionlog',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/ProportionLog.vue'),
-                    meta: { title: '数据汇总' }
+                    meta: { title: '历史数据' }
                 },
                 {
                     path: '/tabs',

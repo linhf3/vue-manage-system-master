@@ -73,19 +73,19 @@ export default {
                     subs: [
                       {
                         index: 'stockAndfuturesData',
-                        title: '数据监控0'
+                        title: '综合面板'
                       },
                         {
                             index: 'datamonitoring',
-                            title: '数据监控1'
+                            title: '股票面板'
                         },
                         {
                             index: 'futuresOneDaysData',
-                            title: '数据监控2'
+                            title: '期货面板'
                         },
                       {
                         index: 'futuresData',
-                        title: '数据监控3'
+                        title: '设计模式'
                       },
                         {
                             index: 'stockMaintenance',
@@ -93,7 +93,7 @@ export default {
                         },
                         {
                             index: 'proportionlog',
-                            title: '数据汇总'
+                            title: '历史数据'
                         }
 
                     ]

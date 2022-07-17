@@ -21,16 +21,32 @@
                 ref="multipleTable"
                 header-cell-class-name="table-header">
                 <el-table-column label="名称">
-                    <template slot-scope="scope">{{scope.row.name}}</template>
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.name}}</div>
+                    <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.name}}</div>
+                    <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.name}}</div>
+                  </template>
                 </el-table-column>
               <el-table-column label="数值">
-                <template slot-scope="scope">{{scope.row.price}}</template>
+                <template slot-scope="scope">
+                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.price}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.price}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.price}}</div>
+                </template>
               </el-table-column>
                 <el-table-column label="一日偏离">
-                    <template slot-scope="scope">{{scope.row.proportion}}</template>
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.proportion}}</div>
+                    <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.proportion}}</div>
+                    <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.proportion}}</div>
+                  </template>
                 </el-table-column>
               <el-table-column label="五日偏离">
-                <template slot-scope="scope">{{scope.row.fProportion}}</template>
+                <template slot-scope="scope">
+                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.fProportion}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.fProportion}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.fProportion}}</div>
+                </template>
               </el-table-column>
 
 
@@ -49,7 +65,7 @@ export default {
             editVisible: false,
             dynamicTags: [],
             inputVisible: false,
-            millisecond:3
+            millisecond:6
 
 
         };
@@ -69,7 +85,7 @@ export default {
             clearInterval(this.clearTimeSet);
         },
         getData() { // 从服务端加载数据的函数
-            this.$http.get('/godwealth/api/futures/futuresData/').then((response)=> {
+            this.$http.get('/godwealth/api/futures/futuresfiveData/').then((response)=> {
               if (response.data.status != 200){
                 alert(response.data.response.data.message);
                 this.$options.methods.stopInterval()

@@ -12,7 +12,6 @@
             <div class="handle-box">
               <el-input v-model="stockMillisecond" placeholder="时间(秒)" class="handle-input mr10" style="width: 160px;"></el-input>
               <el-button type="success" @click = "refreshStockDate">开始</el-button>
-              <!--                <el-button type="success" id = "speak" @click = "speak">语音</el-button>-->
               <el-button type="danger" @click = "stopStockInterval">停止</el-button>
             </div>
             <el-table
