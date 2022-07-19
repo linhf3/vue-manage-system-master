@@ -27,7 +27,7 @@
                     <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.name}}</div>
                   </template>
                 </el-table-column>
-                <el-table-column label="偏离">
+                <el-table-column label="一日">
                   <template slot-scope="scope">
                     <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.proportion}}</div>
                     <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.proportion}}</div>
