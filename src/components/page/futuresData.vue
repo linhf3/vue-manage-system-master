@@ -12,7 +12,8 @@
                 <el-input v-model="millisecond" placeholder="时间(秒)" class="handle-input mr10" style="width: 160px;"></el-input>
                 <el-button type="success" @click = "refreshDate">开始</el-button>
 <!--                <el-button type="success" id = "speak" @click = "speak">语音</el-button>-->
-                <el-button type="danger" @click = "stopInterval">停止</el-button>
+                <el-button type="success" @click = "stopInterval">停止</el-button>
+                <el-button type="success" @click = "isShow">显示</el-button>
             </div>
             <el-table
                 :data="list"
@@ -21,7 +22,10 @@
                 ref="multipleTable"
                 header-cell-class-name="table-header">
                 <el-table-column label="设计模式">
-                    <template slot-scope="scope">设计模式</template>
+                    <template slot-scope="scope">
+                      <div v-if="show == true" >{{scope.row.name}}</div>
+                      <div v-if="show == false" >设计模式</div>
+                      </template>
                 </el-table-column>
               <el-table-column label="人数">
                 <template slot-scope="scope">{{scope.row.price}}</template>
@@ -49,6 +53,7 @@ export default {
             editVisible: false,
             dynamicTags: [],
             inputVisible: false,
+            show:false,
             millisecond:3
 
 
@@ -68,6 +73,13 @@ export default {
         stopInterval(){
             clearInterval(this.clearTimeSet);
         },
+      isShow(){
+        if (this.show){
+          this.show = false;
+        }else {
+          this.show = true;
+        }
+      },
         getData() { // 从服务端加载数据的函数
             this.$http.get('/godwealth/api/futures/futuresData/').then((response)=> {
               if (response.data.status != 200){
