@@ -81,14 +81,21 @@
                   <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.price}}</div>
                 </template>
                 </el-table-column>
-                <el-table-column label="一日">
+                <el-table-column label="一差">
                   <template slot-scope="scope">
                     <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.proportion}}</div>
                     <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.proportion}}</div>
                     <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.proportion}}</div>
                   </template>
                 </el-table-column>
-                <el-table-column label="日差">
+                <el-table-column label="五差">
+                  <template slot-scope="scope">
+                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.fProportion}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.fProportion}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.fProportion}}</div>
+                  </template>
+                </el-table-column>
+                <el-table-column label="一均">
                   <template slot-scope="scope">
                     <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.dailySpread}}</div>
                     <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.dailySpread}}</div>
@@ -102,9 +109,7 @@
                     <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.fiveDailySpread}}</div>
                   </template>
                 </el-table-column>
-<!--                <el-table-column label="五日偏离">-->
-<!--                  <template slot-scope="scope">{{scope.row.fProportion}}</template>-->
-<!--                </el-table-column>-->
+
 
 
               </el-table>
