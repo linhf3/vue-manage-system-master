@@ -170,7 +170,7 @@ export default {
         this.warningFlag = false;
       },
       getStockData() { // 从服务端加载数据的函数
-        this.$http.get('/godwealth/api/stock/stockData/').then((response)=> {
+        this.$http.get('/godwealth/api/stock/futuresDataComplex/').then((response)=> {
           if (response.data.status != 200){
             alert(response.data.response.data.message);
             this.$options.methods.stopInterval()
@@ -191,7 +191,7 @@ export default {
         })
       },
         getFuturesData() { // 从服务端加载数据的函数
-            this.$http.get('/godwealth/api/futures/futuresData/').then((response)=> {
+            this.$http.get('/godwealth/api/futures/futuresDataComplex/').then((response)=> {
               if (response.data.status != 200){
                 alert(response.data.response.data.message);
                 this.$options.methods.stopInterval()
