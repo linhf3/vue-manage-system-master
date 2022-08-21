@@ -32,7 +32,12 @@ export default new Router({
                 {
                     path: '/stockAndfuturesData',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/stockAndfuturesData.vue'),
-                    meta: { title: '综合面板' }
+                    meta: { title: '综合面板(速度版)' }
+                },
+                {
+                    path: '/stockAndfuturesDataComplex',
+                    component: () => import(/* webpackChunkName: "table" */ '../components/page/stockAndfuturesDataComplex.vue'),
+                    meta: { title: '综合面板(复杂版)' }
                 },
                 {
                     path: '/datamonitoring',

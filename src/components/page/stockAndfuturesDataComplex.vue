@@ -88,13 +88,13 @@
                     <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.proportion}}</div>
                   </template>
                 </el-table-column>
-<!--                <el-table-column label="五差">-->
-<!--                  <template slot-scope="scope">-->
-<!--                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.fProportion}}</div>-->
-<!--                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.fProportion}}</div>-->
-<!--                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.fProportion}}</div>-->
-<!--                  </template>-->
-<!--                </el-table-column>-->
+                <el-table-column label="五差">
+                  <template slot-scope="scope">
+                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.fProportion}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.fProportion}}</div>
+                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.fProportion}}</div>
+                  </template>
+                </el-table-column>
                 <el-table-column label="一均">
                   <template slot-scope="scope">
                     <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.dailySpread}}</div>
@@ -124,7 +124,7 @@
 <script>
 import { fetchData } from '../../api/index';
 export default {
-    name: 'stockAndfuturesData',
+    name: 'stockAndfuturesDataComplex',
     data() {
         return {
           stockList: [],

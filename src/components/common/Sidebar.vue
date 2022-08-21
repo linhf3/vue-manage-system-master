@@ -73,7 +73,11 @@ export default {
                     subs: [
                       {
                         index: 'stockAndfuturesData',
-                        title: '综合面板'
+                        title: '综合面板(速度版)'
+                      },
+                      {
+                        index: 'stockAndfuturesDataComplex',
+                        title: '综合面板(复杂版)'
                       },
                         {
                             index: 'datamonitoring',
