@@ -72,6 +72,10 @@ export default {
                     title: '淘票票',
                     subs: [
                       {
+                        index: 'sinaFuturesData',
+                        title: '新浪'
+                      },
+                      {
                         index: 'stockAndfuturesData',
                         title: '综合面板(速度版)'
                       },

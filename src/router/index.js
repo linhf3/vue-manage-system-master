@@ -30,6 +30,11 @@ export default new Router({
                     meta: { title: '基础表格' }
                 },
                 {
+                    path: '/sinaFuturesData',
+                    component: () => import(/* webpackChunkName: "table" */ '../components/page/sinaFuturesData.vue'),
+                    meta: { title: '新浪' }
+                },
+                {
                     path: '/stockAndfuturesData',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/stockAndfuturesData.vue'),
                     meta: { title: '综合面板(速度版)' }
