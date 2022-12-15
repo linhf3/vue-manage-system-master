@@ -1,58 +1,6 @@
 <template>
     <div>
-        <div class="crumbs">
-            <el-breadcrumb separator="/">
-                <el-breadcrumb-item>
-                    <i class="el-icon-lx-cascades"></i>
-                </el-breadcrumb-item>
-            </el-breadcrumb>
-        </div>
-          <!--      第一部分-->
-          <div class="box1">
-            <div class="handle-box">
-              <el-input v-model="stockMillisecond" placeholder="时间(秒)" class="handle-input mr10" style="width: 160px;"></el-input>
-              <el-button type="success" @click = "refreshStockDate">开始</el-button>
-              <el-button type="danger" @click = "stopStockInterval">停止</el-button>
-            </div>
-            <el-table
-                :data="stockList"
-                border
-                class="table"
-                ref="multipleTable"
-                header-cell-class-name="table-header">
-              <el-table-column label="名称">
-                <template slot-scope="scope">
-                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.name}}</div>
-                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.name}}</div>
-                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.name}}</div>
-                </template>
-              </el-table-column>
-              <el-table-column label="数值">
-                <template slot-scope="scope">
-                  <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.price}}</div>
-                  <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.price}}</div>
-                  <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.price}}</div>
-                </template>
-              </el-table-column>
-              <el-table-column label="五日">
-                <template slot-scope="scope">
-                <div v-if="scope.row.positiveNegativeFlag == -1" style="color:red;font-weight:bold;">{{scope.row.proportion}}</div>
-                <div v-if="scope.row.positiveNegativeFlag == 0" >{{scope.row.proportion}}</div>
-                <div v-if="scope.row.positiveNegativeFlag == 1" style="color:green;font-weight:bold;">{{scope.row.proportion}}</div>
-                </template>
-              </el-table-column>
-<!--              <el-table-column label="五日偏离">-->
-<!--                <template slot-scope="scope">{{scope.row.fProportion}}</template>-->
-<!--              </el-table-column>-->
-
-
-            </el-table>
-          </div>
-
-
-
-<!--      第二部分-->
-          <div class="box2">
+          <div class="box">
               <div class="handle-box">
                 <el-input v-model="futuresMillisecond" placeholder="时间(秒)" class="handle-input mr10" style="width: 160px;"></el-input>
                 <el-button type="success" @click = "refreshFuturesDate">开始</el-button>
@@ -147,7 +95,7 @@ export default {
             dynamicTags: [],
             inputVisible: false,
           stockMillisecond:5,
-          futuresMillisecond:3,
+          futuresMillisecond:5,
           warningFlag: false  //期货预警开启标识，默认不开启
 
 
