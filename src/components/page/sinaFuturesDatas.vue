@@ -86,7 +86,7 @@
 <script>
 import { fetchData } from '../../api/index';
 export default {
-    name: 'sinaFuturesData',
+    name: 'sinaFuturesDatas',
     data() {
         return {
           stockList: [],
@@ -107,7 +107,7 @@ export default {
     methods: {
       refreshStockDate() { // 从服务端加载数据的函数
         if(this.stockList.length <= 0){
-          this.getStockData();
+          this.getStockDatas();
         }
         // 实现轮询
         this.clearTimeSet1 = setInterval(()=>{this.getStockData(),this.time}, this.stockMillisecond*1000);
@@ -131,7 +131,7 @@ export default {
       stopWarning(){
         this.warningFlag = false;
       },
-      getStockData() { // 从服务端加载数据的函数
+      getStockDatas() { // 从服务端加载数据的函数
         this.$http.get('/godwealth/api/stock/stockData/').then((response)=> {
           if (response.data.status != 200){
             alert(response.data.response.data.message);
@@ -153,7 +153,7 @@ export default {
         })
       },
         getFuturesData() { // 从服务端加载数据的函数
-            this.$http.get('/godwealth/api/sfutures/sfuturesData/').then((response)=> {
+            this.$http.get('/godwealth/api/sfutures/sfuturesDatas/').then((response)=> {
               if (response.data.status != 200){
                 alert(response.data.response.data.message);
                 this.$options.methods.stopInterval()

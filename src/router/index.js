@@ -32,7 +32,12 @@ export default new Router({
                 {
                     path: '/sinaFuturesData',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/sinaFuturesData.vue'),
-                    meta: { title: '新浪' }
+                    meta: { title: '数据1' }
+                },
+                {
+                    path: '/sinaFuturesDatas',
+                    component: () => import(/* webpackChunkName: "table" */ '../components/page/sinaFuturesDatas.vue'),
+                    meta: { title: '数据2' }
                 },
                 {
                     path: '/stockAndfuturesData',

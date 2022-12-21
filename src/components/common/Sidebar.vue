@@ -73,7 +73,11 @@ export default {
                     subs: [
                       {
                         index: 'sinaFuturesData',
-                        title: '新浪'
+                        title: '数据1'
+                      },
+                      {
+                        index: 'sinaFuturesDatas',
+                        title: '数据2'
                       },
                       {
                         index: 'stockAndfuturesData',
