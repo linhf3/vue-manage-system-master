@@ -30,6 +30,11 @@ export default new Router({
                     meta: { title: '基础表格' }
                 },
                 {
+                    path: '/btc',
+                    component: () => import(/* webpackChunkName: "table" */ '../components/page/Btc.vue'),
+                    meta: { title: 'b' }
+                },
+                {
                     path: '/sinaFuturesData',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/sinaFuturesData.vue'),
                     meta: { title: '数据1' }

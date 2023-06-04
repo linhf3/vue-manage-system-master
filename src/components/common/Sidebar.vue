@@ -72,6 +72,10 @@ export default {
                     title: '淘票票',
                     subs: [
                       {
+                        index: 'btc',
+                        title: 'b'
+                      },
+                      {
                         index: 'sinaFuturesData',
                         title: '数据1'
                       },
