@@ -15,29 +15,39 @@
                   class="table"
                   ref="multipleTable"
                   header-cell-class-name="table-header">
-                <el-table-column label="名称">
+                <el-table-column label="名">
                   <template slot-scope="scope">
                     <div >{{scope.row.name}}</div>
                   </template>
                 </el-table-column>
-                <el-table-column label="数值">
+                <el-table-column label="驾">
                   <template slot-scope="scope">
                     <div >{{scope.row.price}}</div>
                   </template>
                 </el-table-column>
-                <el-table-column label="涨幅">
+                <el-table-column label="胀">
                   <template slot-scope="scope">
                     <div >{{scope.row.zhangfu}}</div>
                   </template>
                 </el-table-column>
-                <el-table-column label="振幅">
+                <el-table-column label="振">
                   <template slot-scope="scope">
                     <div >{{scope.row.zf}}</div>
                   </template>
                 </el-table-column>
-                <el-table-column label="当前振幅">
+                <el-table-column label="上振">
                   <template slot-scope="scope">
-                    <div >{{scope.row.bzf}}</div>
+                    <div >{{scope.row.szf}}</div>
+                  </template>
+                </el-table-column>
+                <el-table-column label="下振">
+                  <template slot-scope="scope">
+                    <div >{{scope.row.xzf}}</div>
+                  </template>
+                </el-table-column>
+                <el-table-column label="点">
+                  <template slot-scope="scope">
+                    <div >{{scope.row.dc}}</div>
                   </template>
                 </el-table-column>
 <!--                <el-table-column label="数值">
