@@ -72,6 +72,10 @@ export default {
                     title: '淘票票',
                     subs: [
                       {
+                        index: 'fure',
+                        title: 'f'
+                      },
+                      {
                         index: 'btc',
                         title: 'b'
                       },

@@ -30,6 +30,11 @@ export default new Router({
                     meta: { title: '基础表格' }
                 },
                 {
+                    path: '/fure',
+                    component: () => import(/* webpackChunkName: "table" */ '../components/page/Fure.vue'),
+                    meta: { title: 'f' }
+                },
+                {
                     path: '/btc',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/Btc.vue'),
                     meta: { title: 'b' }
