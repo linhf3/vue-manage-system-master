@@ -27,6 +27,12 @@
                     <div v-if="scope.row.proportionAbs == 0">{{scope.row.price}}</div>
                   </template>
                 </el-table-column>
+                <el-table-column label="点">
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.dc}}</div>
+                    <div v-if="scope.row.proportionAbs == 0">{{scope.row.dc}}</div>
+                  </template>
+                </el-table-column>
                 <el-table-column label="偏">
                   <template slot-scope="scope">
                     <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.proportion}}</div>
@@ -58,12 +64,7 @@
                     <div v-if="scope.row.proportionAbs == 0">{{scope.row.xz}}</div>
                   </template>
                 </el-table-column>
-                <el-table-column label="点">
-                  <template slot-scope="scope">
-                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.dc}}</div>
-                    <div v-if="scope.row.proportionAbs == 0">{{scope.row.dc}}</div>
-                  </template>
-                </el-table-column>
+
               </el-table>
             </div>
     </div>
