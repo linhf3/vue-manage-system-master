@@ -17,37 +17,51 @@
                   header-cell-class-name="table-header">
                 <el-table-column label="名">
                   <template slot-scope="scope">
-                    <div >{{scope.row.name}}</div>
+                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.name}}</div>
+                    <div v-if="scope.row.proportionAbs == 0" >{{scope.row.name}}</div>
                   </template>
                 </el-table-column>
                 <el-table-column label="驾">
                   <template slot-scope="scope">
-                    <div >{{scope.row.price}}</div>
+                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.price}}</div>
+                    <div v-if="scope.row.proportionAbs == 0">{{scope.row.price}}</div>
                   </template>
                 </el-table-column>
-                <el-table-column label="胀">
+                <el-table-column label="偏">
                   <template slot-scope="scope">
-                    <div >{{scope.row.zhangfu}}</div>
+                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.proportion}}</div>
+                    <div v-if="scope.row.proportionAbs == 0">{{scope.row.proportion}}</div>
                   </template>
                 </el-table-column>
                 <el-table-column label="振">
                   <template slot-scope="scope">
-                    <div >{{scope.row.zf}}</div>
+                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.zf}}</div>
+                    <div v-if="scope.row.proportionAbs == 0">{{scope.row.zf}}</div>
                   </template>
                 </el-table-column>
+                <el-table-column label="胀">
+                  <template slot-scope="scope">
+                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.zhangfu}}</div>
+                    <div v-if="scope.row.proportionAbs == 0">{{scope.row.zhangfu}}</div>
+                  </template>
+                </el-table-column>
+
                 <el-table-column label="上振">
                   <template slot-scope="scope">
-                    <div >{{scope.row.sz}}</div>
+                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.sz}}</div>
+                    <div v-if="scope.row.proportionAbs == 0">{{scope.row.sz}}</div>
                   </template>
                 </el-table-column>
                 <el-table-column label="下振">
                   <template slot-scope="scope">
-                    <div >{{scope.row.xz}}</div>
+                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.xz}}</div>
+                    <div v-if="scope.row.proportionAbs == 0">{{scope.row.xz}}</div>
                   </template>
                 </el-table-column>
                 <el-table-column label="点">
                   <template slot-scope="scope">
-                    <div >{{scope.row.dc}}</div>
+                    <div v-if="scope.row.proportionAbs == 1" style="color:green;font-weight:bold;">{{scope.row.dc}}</div>
+                    <div v-if="scope.row.proportionAbs == 0">{{scope.row.dc}}</div>
                   </template>
                 </el-table-column>
               </el-table>
